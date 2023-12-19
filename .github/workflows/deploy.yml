@@ -9,6 +9,12 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      TENANT_ID: ${{ secrets.TENANT_ID }}
+      SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+      SERVICE_PRINCIPLE_KEY: ${{ secrets.SERVICE_PRINCIPLE_KEY }}
+      SERVICE_PRINCIPLE_ID: ${{ secrets.SERVICE_PRINCIPLE_ID }}
 
     permissions:
       contents: read
@@ -34,12 +40,9 @@ jobs:
         working-directory: ./azure
         name: Initialize Terraform
 
-      - run: cmd
-        shell: terraform -v
-
-#      - run: terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPLE_ID -var serviceprinciple_key=$SERVICE_PRINCIPLE_KEY -var tenant_id=$TENANT_ID -var subscription_id=SUBSCRIPTION_ID -var ssh_key="$SSH_KEY"
-#        working-directory: ./azure
-#        name: Deploy aks cluster
+      - run: terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPLE_ID -var serviceprinciple_key=$SERVICE_PRINCIPLE_KEY -var tenant_id=$TENANT_ID -var subscription_id=SUBSCRIPTION_ID -var ssh_key="$SSH_KEY"
+        working-directory: ./azure
+        name: Deploy aks cluster
 #        with:
 #          TENANT_ID: ${{ secrets.TENANT_ID }}
 #          SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
