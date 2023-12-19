@@ -35,26 +35,26 @@ resource "azurerm_kubernetes_cluster" "aks-demo" {
     load_balancer_sku = "Standard"
   }
 
-  addon_profile {
-    aci_connector_linux {
-      enabled = false
-    }
-
-    azure_policy {
-      enabled = false
-    }
-
-    http_application_routing {
-      enabled = false
-    }
-
-    kube_dashboard {
-      enabled = false
-    }
-
-    oms_agent {
-      enabled = false
-    }
-  }
+#  addon_profile {
+#    aci_connector_linux {
+#      enabled = false
+#    }
+#
+#    azure_policy {
+#      enabled = false
+#    }
+#
+#    http_application_routing {
+#      enabled = false
+#    }
+#
+#    kube_dashboard {
+#      enabled = false
+#    }
+#
+#    oms_agent {
+#      enabled = false
+#    }
+#  }
 
 }
