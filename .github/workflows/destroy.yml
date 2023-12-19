@@ -1,6 +1,9 @@
 name: Deploy Infra
 
-on: [ push ]
+on:
+  push:
+    branches:
+      - 'shouldOnlyTriggerdManual'
 
 jobs:
   build:
